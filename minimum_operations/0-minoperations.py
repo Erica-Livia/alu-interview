@@ -13,7 +13,7 @@ def minOperations(n):
 	for i in range(2, n+1):
 		if n % i == 0:
 			factor = n // i
-			min_op[1] = min_opa[factor] + (i // factor)
+			min_ops[1] = min_ops[factor] + (i // factor)
 
 		for j in range(1, i):
 			min_ops[i] = min(min_ops[i], min_ops[j] + min_ops[i - j])
