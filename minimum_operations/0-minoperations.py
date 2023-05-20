@@ -3,7 +3,7 @@
 from math import sqrt
 
 
-def minOperations(n)):
+def minOperations(n):
 	if n <= 1:
 		return 0
 	
