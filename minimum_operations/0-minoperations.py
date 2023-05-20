@@ -10,7 +10,7 @@ def minOperations(n):
 	min_ops = [float('inf')] * (n+1)
 	min_ops[1] = 0
 	
-	for i in ranfe(2, n+1):
+	for i in range(2, n+1):
 		if n % i == 0:
 			factor = n // i
 			min_op[1] = min_opa[factor] + (i // factor)
