@@ -1,24 +1,35 @@
 #!/usr/bin/python3
-"""minOperation"""
+"""min operation"""
 from math import sqrt
 
 
 def minOperations(n):
-	if n <= 1:
-		return 0
-	#store the minimum operations for each position
-	min_ops = [float('inf')] * (n + 1)
-	min_ops[1] = 0
-	
-	for i in range(2, n+1):
-		if n % i == 0:
-			factor = n // i
-			min_ops[1] = min_ops[factor] + (i // factor)
-			
-		for j in range(1, i):
-			min_ops[i] = min(min_ops[i], min_ops[j] + min_ops[i - j])
+    """ a function for getting min operations needed to get n number
+    H when you can only copy and paste """
+    if n <= 1:
+        return 0
+    elif is_prime(n):
+        return n
+    else:
+        prime = small_prime(n)
+        if prime:
+            return prime + minOperations(int(n/prime))
 
-	if n > 1:
-		min_ops[1] = min_ops[factor] + n
-	
-	return min_ops[n] if min_ops[n] != float('inf') else 0
+
+def is_prime(n):
+    """ funtion is_prime, to check if a number is prime """
+    result = True
+    for i in range(2, int(sqrt(n)) + 1):
+        if n % i == 0:
+            result = False
+    return result
+
+
+def small_prime(n):
+    """ get the smallest prime factor """
+    result = None
+    for i in range(2, int(n/2 + 1)):
+        if n % i == 0:
+            result = i
+            break
+    return result
